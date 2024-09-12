@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GET IN TOUCH</title>
+    <link rel="stylesheet" href="css/getintouch.css">
+</head>
+<body>
+    <div class="container">
+        <form onsubmit="sendEmail(); reset(); return false;">
+            <h3>GET IN TOUCH</h3>
+            <input type="text" id="name" placeholder="Full Name" required/>
+            <input type="text" id="email" placeholder="Email id" required/>
+            <input type="text" id="phone" placeholder="Phone number" required/>
+            <input type="text" id="phone" placeholder="Alternate Phone number"/>
+            <select >
+                <optgroup label="Marketing">
+                    <option>Tele-Marketing</option>
+                    <option>BULK Emailing</option>
+                    <option>BULK Whatsapp Messaging</option>
+                </optgroup>
+                <optgroup label="Development">
+                    <option>Web Design/Development</option>
+                    <option>Android/IOS App Development</option>
+                    <option>UI/UX Design</option>
+                </optgroup>
+                <optgroup label="Media Creation/Editing">
+                    <option>Poster/Banner designing</option>
+                    <option>Social Media Posts</option>
+                    <option>Video Editing</option>
+                </optgroup>
+                <optgroup label="Social-Media">
+                    <option>Social Media Handling</option>
+                    <option>Instagram/FB Marketing</option>
+                </optgroup>
+            </select>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+         function sendEmail()
+         {
+                Email.Send({
+        Host : "smtp.gmail.com",
+        Username : "contact@tncgroup.in",
+        Password : "TNCgroup$&#2022",
+        To : 'contact@tncgroup.in',
+        From : document.getElementById("email").value,
+        Subject : "Enquiry",
+        Body : document.getElementById("name").value
+               + "<br> Email:" + document.getElementById("email").value
+               + "<br> Phone no:" + document.getElementById("phone").value   
+               + "<br> Service:" + document.getElementById("Service").value       
+            }).then(
+            message => alert("Message sent Successfully")
+            );
+         }
+    </script>
+</body>
+</html>
